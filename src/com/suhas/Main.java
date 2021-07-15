@@ -1,21 +1,30 @@
 package com.suhas;
 
+import java.util.Arrays;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        checkEvenAndOdd();
-        isPrime();
-        greatestOfThree(5,2,10);
-        sumOfNumbers();
-//        FIBONACCI
-        fibonacci();
-        lessThanNthTerm();
-        armStrongNumber(153);
-        divisibleBy();
-        areaSquare();
-        areaRectangle();
-        triangleForm();
+//        checkEvenAndOdd();
+//        isPrime();
+//        greatestOfThree(5,2,10);
+//        sumOfNumbers();
+////        FIBONACCI
+//        fibonacci();
+//        lessThanNthTerm();
+//        armStrongNumber(153);
+//        divisibleBy();
+//        areaSquare();
+//        areaRectangle();
+//        triangleForm();
+//        weekDays();
+//        leapYear();
+//        avgFive(1,2,3,4,5);
+//        secondGreatest(1,2,3,4,5);
+//        hcfAndLcm();
+//        isOwelOrConsonant();
+        isAlphabet();
     }
 //-------------------------------------------------------------------------
     public static void checkEvenAndOdd() {
@@ -189,7 +198,154 @@ public class Main {
             System.out.println("Does not form a Triangle");
         }
     }
+
+    public static void weekDays() {
+        Scanner sc = new Scanner(System.in);
+        boolean correct = true;
+        while (correct) {
+            System.out.println("Program to print week days \nPlease enter a number 0-6!");
+            int num = sc.nextInt();
+            if(num<0 || num > 6) {
+                System.out.println("not correct");;
+            } else {
+                correct=false;
+                switch(num) {
+                    case 0:
+                        System.out.println("Sunday");
+                        break;
+                    case 1:
+                        System.out.println("Monday");
+                        break;
+                    case 2:
+                        System.out.println("Tuesday");
+                        break;
+                    case 3:
+                        System.out.println("Wednesday");
+                        break;
+                    case 4:
+                        System.out.println("Thursday");
+                        break;
+                    case 5:
+                        System.out.println("Friday");
+                        break;
+                    case 6:
+                        System.out.println("Saturday");
+                        break;
+                }
+            }
+        }
+    }
+
+    public static void leapYear() {
+        int year;
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Program to check leap year \nEnter any Year:");
+        year = scan.nextInt();
+        scan.close();
+        boolean isLeap = false;
+
+        if(year % 4 == 0)
+        {
+            if( year % 100 == 0)
+            {
+                isLeap = year % 400 == 0;
+            }
+            else
+                isLeap = true;
+        }
+        else {
+            isLeap = false;
+        }
+
+        if(isLeap)
+            System.out.println(year + " is a Leap Year.");
+        else
+            System.out.println(year + " is not a Leap Year.");
+    }
+
+    public static void avgFive(int one, int two, int three, int four, int five) {
+        System.out.println("Program to produce average of given numbers \nAverage of given numbers is: " +((one+two+three+four+five)/5));
+    }
+
+    public static void secondGreatest(int one, int two, int three, int four, int five) {
+        int[] numbersArray = {one, two, three, four, five};
+        int largest = numbersArray[0];
+        int secondLargest = numbersArray[0];
+
+        for (int j : numbersArray) {
+            if (j > largest) {
+                secondLargest = largest;
+                largest = j;
+            } else if (j > secondLargest) {
+                secondLargest = j;
+            }
+        }
+        System.out.println("\nProgram to find the second largest number in an array \nSecond largest number is:" + secondLargest);
+
+    }
+
+    public static void hcfAndLcm() {
+        int temp1, temp2, num1, num2, temp, hcf, lcm;
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter First Number: ");
+        num1 = scanner.nextInt();
+        System.out.print("Enter Second Number: ");
+        num2 = scanner.nextInt();
+        scanner.close();
+
+        temp1 = num1;
+        temp2 = num2;
+
+        while(temp2 != 0){
+            temp = temp2;
+            temp2 = temp1%temp2;
+            temp1 = temp;
+        }
+
+        hcf = temp1;
+        lcm = (num1*num2)/hcf;
+
+        System.out.println("HCF of input numbers: "+hcf);
+        System.out.println("LCM of input numbers: "+lcm);
+
+    }
+
+    public static void isOwelOrConsonant() {
+        char ch;
+        Scanner scan = new Scanner(System.in);
+
+        System.out.print("Program to check for owels and consonant \nEnter an Alphabet : ");
+        ch = scan.next().charAt(0);
+
+        if(ch=='a' || ch=='A' || ch=='e' || ch=='E' ||
+                ch=='i' || ch=='I' || ch=='o' || ch=='O' ||
+                ch=='u' || ch=='U')
+        {
+            System.out.print("This is a Vowel");
+        }
+        else
+        {
+            System.out.print("This is a Consonant");
+        }
+    }
+
+    public static void isAlphabet() {
+        char ch;
+        Scanner scan = new Scanner(System.in);
+
+        System.out.print("Program to check for an Alphabet \nEnter an Alphabet : ");
+        ch = scan.next().charAt(0);
+
+        String output = (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')
+                ? ch + " is an alphabet."
+                : ch + " is not an alphabet.";
+
+        System.out.println(output);
+
+    }
 }
+
 
 
 
